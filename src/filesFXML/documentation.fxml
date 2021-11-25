@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefViewportHeight="500.0" prefViewportWidth="1000.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Documentation">
+   <content>
+      <AnchorPane prefHeight="376.0" prefWidth="583.0" style="-fx-background-color: gray;">
+         <children>
+            <Text layoutX="6.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Програмний продукт для роботи з файловою базою даних про фізичних осіб.2. Створення файлу бази даних та запис до нього даних у певному форматі.3. Читання всіх даних із файлу та їх відображення.4. Додавання нового елемента даних до файлу бази.5. Оновлення будь-якого елемента даних у файлі бази.6. Видалення будь-якого елемента даних із файлу.7. Отримання та відображення підсумкової інформації.8. Видача користувачу попереджуючих та інформаційних повідомлень.9. Сортування фізичних осіб в програмі." wrappingWidth="566.13671875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
