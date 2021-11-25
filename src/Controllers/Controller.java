@@ -52,17 +52,16 @@ public class Controller {
         authSignUpButton.setOnAction(actionEvent -> {
             if (loginField.getText().isEmpty() | passwordField.getText().isEmpty()) {
                 alerts.showAlert(Alert.AlertType.ERROR, "Form Error!", "Please enter your login or password");
-            } else alerts.showAlert(Alert.AlertType.INFORMATION,
-                    "Log In Successful!", "Welcome " + loginField.getText());
+            } else {
+                authSignUpButton.getScene().getWindow().hide();
+                ons.openNewScene("../filesFXML/tableController.fxml");
+                alerts.showAlert(Alert.AlertType.INFORMATION,
+                        "Log In Successful!", "Welcome " + loginField.getText());
+
+            }
 
         });
 
-        registerButton.setOnAction(event -> {
-            registerButton.getScene().getWindow().hide();
-            ons.openNewScene("../filesFXML/tableController.fxml");
-
-
-        });
 
         buttonDocumentation.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
     }

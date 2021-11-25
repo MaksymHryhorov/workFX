@@ -94,45 +94,54 @@ public class TableController {
     private TextField changeUserName;
 
     private int numbers;
+    Alerts alerts = new Alerts();
 
     @FXML
     void rowClicked(javafx.scene.input.MouseEvent event) {
-        UserAccount user = table.getSelectionModel().getSelectedItem();
-        changeUserName.setText(String.valueOf(user.getUserName()));
-        changeEmail.setText(String.valueOf(user.getEmail()));
-        changeFirstName.setText(String.valueOf(user.getFirstName()));
-        changeLastName.setText(String.valueOf(user.getLastName()));
-        changePit.setText(String.valueOf(user.getPit()));
+        try {
+            UserAccount user = table.getSelectionModel().getSelectedItem();
+            changeUserName.setText(String.valueOf(user.getUserName()));
+            changeEmail.setText(String.valueOf(user.getEmail()));
+            changeFirstName.setText(String.valueOf(user.getFirstName()));
+            changeLastName.setText(String.valueOf(user.getLastName()));
+            changePit.setText(String.valueOf(user.getPit()));
+        } catch (Exception e) {
+            alerts.showAlert(Alert.AlertType.ERROR, "ERROR", "Select a user in the table");
+        }
 
     }
 
+
     @FXML
     void edit(ActionEvent event) {
-        ObservableList<UserAccount> currentTableData = table.getItems();
+        try {
+            ObservableList<UserAccount> currentTableData = table.getItems();
 
-        int currentPIT = Integer.parseInt(changePit.getText());
+            int currentPIT = Integer.parseInt(changePit.getText());
 
-        for (UserAccount user : currentTableData) {
-            if (user.getPit() == currentPIT) {
-                user.setUserName(changeUserName.getText());
-                user.setEmail(changeEmail.getText());
-                user.setFirstName(changeFirstName.getText());
-                user.setLastName(changeLastName.getText());
-                user.setPit(Integer.parseInt(changePit.getText()));
+            for (UserAccount user : currentTableData) {
+                if (user.getPit() == currentPIT) {
+                    user.setUserName(changeUserName.getText());
+                    user.setEmail(changeEmail.getText());
+                    user.setFirstName(changeFirstName.getText());
+                    user.setLastName(changeLastName.getText());
+                    user.setPit(Integer.parseInt(changePit.getText()));
 
-                System.out.println("IN");
-                table.setItems(currentTableData);
-                table.refresh();
-                break;
+                    System.out.println("IN");
+                    table.setItems(currentTableData);
+                    table.refresh();
+                    break;
+                }
+                System.out.println("no");
             }
-            System.out.println("no");
+        } catch (Exception e) {
+            alerts.showAlert(Alert.AlertType.ERROR, "ERROR", "Please select a user in the table");
         }
     }
 
     @FXML
     void initialize() throws IOException, ClassNotFoundException {
-        Alerts alerts = new Alerts();
-        table.setEditable(false);
+        table.setEditable(true);
 
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
         userNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -141,7 +150,6 @@ public class TableController {
             UserAccount userAccount = userAccountStringCellEditEvent.getRowValue();
             userAccount.setUserName(userAccountStringCellEditEvent.getNewValue());
         });
-
 
 
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -207,8 +215,16 @@ public class TableController {
         deleteButton.setOnAction(event -> deleteButtonClicked());
 
         saveButton.setOnAction(event -> {
-            alerts.showAlert(Alert.AlertType.WARNING, "Save", "Do you really want to save");                     /// change
-            saveButtonClicked();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("WARNING");
+            alert.setContentText("Do you really want to save data base?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                saveButtonClicked();
+            } else
+                System.out.println("nope");
 
         });
 
@@ -222,8 +238,18 @@ public class TableController {
         OpenNewScene ons = new OpenNewScene();
 
         regScene.setOnAction(event -> {
-            regScene.getScene().getWindow().hide();
-            ons.openNewScene("../filesFXML/sample.fxml");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("WARNING");
+            alert.setContentText("Do you really want to log out?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                regScene.getScene().getWindow().hide();
+                ons.openNewScene("../filesFXML/sample.fxml");
+            } else
+                System.out.println("nope");
+
         });
 
         FileInputStream fis = new FileInputStream("src/sample/map.txt");
@@ -237,8 +263,11 @@ public class TableController {
 
         /*ObservableList<UserAccount> list = getUserList();*/
 
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
+        try {
+            table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        } catch (Exception e) {
+            alerts.showAlert(Alert.AlertType.ERROR, "ERROR", "Select a user in the table");
+        }
 
         table.setStyle("-fx-font: normal 17px 'cursive' ");
         table.setItems(list);
@@ -298,6 +327,7 @@ public class TableController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("WARNING");
         alert.setContentText("Do you really want to delete user?");
+
         ObservableList<UserAccount> userSelected, allUsers;
         allUsers = table.getItems();
         userSelected = table.getSelectionModel().getSelectedItems();

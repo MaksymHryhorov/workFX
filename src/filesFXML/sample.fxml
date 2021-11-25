@@ -29,11 +29,6 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" layoutX="582.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" style="-fx-background-radius: 8;" text="Register" textFill="#0000009d">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
       <Text fill="#00000082" layoutX="298.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authorization" textAlignment="CENTER" wrappingWidth="204.0">
          <font>
             <Font size="34.0" />

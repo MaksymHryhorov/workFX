@@ -30,7 +30,4 @@ public class Alerts {
 
     }
 
-    public void showAlert() {
-
-    }
 }
