@@ -12,36 +12,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TableController">
     <children>
-        <TableView fx:id="table" editable="true" layoutX="330.0" onMouseClicked="#rowClicked" prefHeight="405.0" prefWidth="670.0" style="-fx-background-radius: 20;">
+        <TableView fx:id="table" editable="true" layoutX="309.0" onMouseClicked="#rowClicked" prefHeight="405.0" prefWidth="691.0" style="-fx-background-radius: 20;">
             <columns>
-                <TableColumn fx:id="userNameCol" prefWidth="126.0" text="User Name" />
-                <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="183.0" text="Email" />
-                <TableColumn fx:id="fullNameCol" minWidth="0.0" prefWidth="249.0" text="Full Name">
+                <TableColumn fx:id="userNameCol" prefWidth="186.0" text="Ім'я користувача" />
+                <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="159.0" text="Пошта" />
+                <TableColumn fx:id="fullNameCol" minWidth="0.0" prefWidth="239.0" text="Ініціали">
                     <columns>
-                        <TableColumn fx:id="firstNameCol" minWidth="15.0" prefWidth="130.0" text="First Name" />
-                        <TableColumn fx:id="lastNameCol" prefWidth="130.0" text="Last Name" />
+                        <TableColumn fx:id="firstNameCol" minWidth="15.0" prefWidth="130.0" text="Ім'я" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="130.0" text="Фамілія" />
                     </columns>
                 </TableColumn>
-                <TableColumn fx:id="pit" prefWidth="99.0" text="PIT" />
+                <TableColumn fx:id="pit" prefWidth="83.0" text="ІПН" />
             </columns>
         </TableView>
-        <TextField fx:id="userNameInput" layoutX="327.0" layoutY="415.0" prefHeight="25.0" prefWidth="119.0" promptText="userName" style="-fx-background-radius: 8;">
+        <TextField fx:id="userNameInput" layoutX="309.0" layoutY="415.0" prefHeight="31.0" prefWidth="146.0" promptText="Ім'я користувача" style="-fx-background-radius: 8;">
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextField>
-        <TextField fx:id="emailInput" layoutX="459.0" layoutY="415.0" prefHeight="31.0" prefWidth="132.0" promptText="email" style="-fx-background-radius: 8;">
+        <TextField fx:id="emailInput" layoutX="467.0" layoutY="415.0" prefHeight="31.0" prefWidth="139.0" promptText="пошта" style="-fx-background-radius: 8;">
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextField>
-        <TextField fx:id="firstNameInput" layoutX="606.0" layoutY="415.0" prefHeight="25.0" prefWidth="119.0" promptText="firstName" style="-fx-background-radius: 8;">
+        <TextField fx:id="firstNameInput" layoutX="619.0" layoutY="415.0" prefHeight="31.0" prefWidth="126.0" promptText="Ім'я" style="-fx-background-radius: 8;">
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextField>
-        <TextField fx:id="lastNameInput" layoutX="739.0" layoutY="415.0" prefHeight="25.0" prefWidth="119.0" promptText="lastName" style="-fx-background-radius: 8;">
+        <TextField fx:id="lastNameInput" layoutX="757.0" layoutY="415.0" prefHeight="25.0" prefWidth="119.0" promptText="Фамілія" style="-fx-background-radius: 8;">
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextField>
-        <TextField fx:id="pitInput" layoutX="874.0" layoutY="415.0" prefHeight="25.0" prefWidth="119.0" promptText="pit" style="-fx-background-radius: 8;">
+        <TextField fx:id="pitInput" layoutX="890.0" layoutY="415.0" prefHeight="31.0" prefWidth="103.0" promptText="ІПН" style="-fx-background-radius: 8;">
          <font>
             <Font name="System Italic" size="15.0" />
          </font></TextField>
@@ -63,7 +63,7 @@
          </font></Button>
       <VBox layoutX="62.0" layoutY="6.0" prefHeight="437.0" prefWidth="205.0" spacing="10.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User Name:" textAlignment="CENTER" wrappingWidth="204.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ім'я користувача:" textAlignment="CENTER" wrappingWidth="204.13671875">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -72,7 +72,7 @@
                <font>
                   <Font name="System Italic" size="15.0" />
                </font></TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" textAlignment="CENTER" wrappingWidth="204.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Пошта:" textAlignment="CENTER" wrappingWidth="204.13671875">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -81,7 +81,7 @@
                <font>
                   <Font name="System Italic" size="15.0" />
                </font></TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" textAlignment="CENTER" wrappingWidth="204.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ім'я:" textAlignment="CENTER" wrappingWidth="204.13671875">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -90,7 +90,7 @@
                <font>
                   <Font name="System Italic" size="15.0" />
                </font></TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" textAlignment="CENTER" wrappingWidth="204.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Фамілія:" textAlignment="CENTER" wrappingWidth="204.13671875">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -99,7 +99,7 @@
                <font>
                   <Font name="System Italic" size="15.0" />
                </font></TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="PIT:" textAlignment="CENTER" wrappingWidth="204.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ІПН:" textAlignment="CENTER" wrappingWidth="204.13671875">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>

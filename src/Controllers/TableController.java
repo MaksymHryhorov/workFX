@@ -9,7 +9,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 import methods.Alerts;
-import methods.NumberTextField;
 import methods.OpenNewScene;
 import sample.UserAccount;
 
@@ -93,7 +92,6 @@ public class TableController {
     @FXML
     private TextField changeUserName;
 
-    private int numbers;
     Alerts alerts = new Alerts();
 
     @FXML
@@ -106,7 +104,7 @@ public class TableController {
             changeLastName.setText(String.valueOf(user.getLastName()));
             changePit.setText(String.valueOf(user.getPit()));
         } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Виберіть користувача в таблиці");
+            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Виберіть користувача в таблиці");
         }
 
     }
@@ -135,7 +133,7 @@ public class TableController {
                 System.out.println("no");
             }
         } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Будь ласка, виберіть користувача в таблиці");
+            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Будь ласка, виберіть користувача в таблиці");
         }
     }
 
@@ -179,8 +177,6 @@ public class TableController {
         });
 
 
-        NumberTextField numberTextField = new NumberTextField();
-
         pit.setCellValueFactory(new PropertyValueFactory<>("pit"));
         pit.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
@@ -193,12 +189,10 @@ public class TableController {
 
         addButton.setOnAction(event -> {
             try {
-                numbers = Integer.parseInt(pitInput.getText());
-
                 if (userNameInput.getText().isEmpty() | emailInput.getText().isEmpty() |
                         firstNameInput.getText().isEmpty() | lastNameInput.getText().isEmpty() |
                         pitInput.getText().isEmpty()) {
-                    alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Будь ласка, заповніть усі поля");
+                    alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Будь ласка, заповніть усі поля");
                 } else {
                     UserAccount userAccount = new UserAccount(userNameInput.getText(), emailInput.getText(),
                             firstNameInput.getText(), lastNameInput.getText(), Integer.parseInt(pitInput.getText()));
@@ -206,7 +200,7 @@ public class TableController {
                 }
 
             } catch (NumberFormatException e) {
-                alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Введіть лише числа в \"pit\"");
+                alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Введіть лише числа в \"pit\"");
             }
 
 
@@ -230,11 +224,16 @@ public class TableController {
         });
 
 
-        userNameInput.setTooltip(new Tooltip("Enter user name"));
-        emailInput.setTooltip(new Tooltip("Enter email"));
-        firstNameInput.setTooltip(new Tooltip("Enter first name"));
-        lastNameInput.setTooltip(new Tooltip("Enter last name"));
-        pitInput.setTooltip(new Tooltip("Enter PIT"));
+        userNameInput.setTooltip(new Tooltip("Введіть Ім'я користувача"));
+        emailInput.setTooltip(new Tooltip("Введіть Пошту"));
+        firstNameInput.setTooltip(new Tooltip("Введіть Ім'я"));
+        lastNameInput.setTooltip(new Tooltip("Введіть Фамілію"));
+        pitInput.setTooltip(new Tooltip("Введіть ІПН"));
+        addButton.setTooltip(new Tooltip("Додати до таблиці"));
+        saveButton.setTooltip(new Tooltip("Зберігти Базу Даних"));
+        deleteButton.setTooltip(new Tooltip("Видалити користувача"));
+        changeColumnButton.setTooltip(new Tooltip("Зберегти зміни"));
+        regScene.setTooltip(new Tooltip("Вийти з аккаунта"));
 
         OpenNewScene ons = new OpenNewScene();
 
@@ -268,26 +267,13 @@ public class TableController {
         try {
             table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Виберіть користувача в таблиці");
+            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Виберіть користувача в таблиці");
         }
 
         table.setStyle("-fx-font: normal 17px 'cursive' ");
         table.setItems(list);
 
     }
-
-/*    private ObservableList<UserAccount> getUserList() {
-        ObservableList<UserAccount> userAccounts = FXCollections.observableArrayList();
-        userAccounts.add(new UserAccount("adam", "adam@gmail.com",
-                "Adam", "Clued", 123456));
-        userAccounts.add(new UserAccount("login", "bane@gmail.com",
-                "Bane", "Brown", 134526));
-        userAccounts.add(new UserAccount("cube", "circle@gmail.com",
-                "Circle", "Adamson", 153424));
-
-        write(userAccounts);
-        return userAccounts;
-    }*/
 
     private void add(UserAccount userAccount) {
         table.getItems().add(userAccount);
@@ -308,10 +294,8 @@ public class TableController {
         try {
             FileOutputStream fos = new FileOutputStream("src/sample/map.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            String newLine = "\n";
 
             for (UserAccount ignored : users) {
-                newLine += users + "\n";
                 oos.writeObject(new ArrayList<>(users));
             }
 

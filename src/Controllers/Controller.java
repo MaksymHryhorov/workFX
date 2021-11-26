@@ -48,7 +48,7 @@ public class Controller {
 
         authSignUpButton.setOnAction(actionEvent -> {
             if (loginField.getText().isEmpty() | passwordField.getText().isEmpty()) {
-                alerts.showAlert(Alert.AlertType.ERROR, "Form Error!", "Будь ласка, введіть свій логін і пароль");
+                alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Будь ласка, введіть свій логін і пароль");
             } else {
                 authSignUpButton.getScene().getWindow().hide();
                 ons.openNewScene("../filesFXML/tableController.fxml");
@@ -57,8 +57,15 @@ public class Controller {
 
             }
 
+
         });
         buttonDocumentation.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
+
+        authSignUpButton.setTooltip(new Tooltip("Вхід"));
+        buttonDocumentation.setStyle("-fx-font: normal 17px 'cursive' ");
+        buttonDocumentation.setTooltip(new Tooltip("Відкрити документацію"));
+        loginField.setTooltip(new Tooltip("Введіть логін"));
+        passwordField.setTooltip(new Tooltip("Введіть пароль"));
 
     }
 
