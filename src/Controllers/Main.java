@@ -24,8 +24,8 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             Alerts alerts = new Alerts();
-            alerts.showAlert(Alert.AlertType.CONFIRMATION,"WARNING","Please consider",
-                    "Do your really want to exit?");
+            alerts.showAlert(Alert.AlertType.CONFIRMATION,"ПОПЕРЕДЖЕННЯ","Будь ласка оберіть",
+                    "Ви дійсно бажаєте вийти?");
 
         });
 

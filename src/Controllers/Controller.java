@@ -40,10 +40,7 @@ public class Controller {
 
     @FXML
     private PasswordField passwordField;
-
-    @FXML
-    private Button registerButton;
-
+    
     @FXML
     void initialize() {
         OpenNewScene ons = new OpenNewScene();
@@ -51,19 +48,18 @@ public class Controller {
 
         authSignUpButton.setOnAction(actionEvent -> {
             if (loginField.getText().isEmpty() | passwordField.getText().isEmpty()) {
-                alerts.showAlert(Alert.AlertType.ERROR, "Form Error!", "Please enter your login or password");
+                alerts.showAlert(Alert.AlertType.ERROR, "Form Error!", "Будь ласка, введіть свій логін і пароль");
             } else {
                 authSignUpButton.getScene().getWindow().hide();
                 ons.openNewScene("../filesFXML/tableController.fxml");
                 alerts.showAlert(Alert.AlertType.INFORMATION,
-                        "Log In Successful!", "Welcome " + loginField.getText());
+                        "Вхід виконано", "Ласкаво просимо " + loginField.getText());
 
             }
 
         });
-
-
         buttonDocumentation.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
+
     }
 
 }

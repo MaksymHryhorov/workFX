@@ -14,36 +14,36 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Controller">
    <children>
-      <TextField fx:id="loginField" layoutX="232.0" layoutY="190.0" prefHeight="38.0" prefWidth="336.0" promptText="Login" style="-fx-background-radius: 10;">
+      <TextField fx:id="loginField" layoutX="232.0" layoutY="190.0" prefHeight="38.0" prefWidth="336.0" promptText="Логін" style="-fx-background-radius: 10;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="232.0" layoutY="267.0" prefHeight="38.0" prefWidth="336.0" promptText="Password" style="-fx-background-radius: 10;">
+      <PasswordField fx:id="passwordField" layoutX="232.0" layoutY="267.0" prefHeight="38.0" prefWidth="336.0" promptText="Пароль" style="-fx-background-radius: 10;">
          <font>
             <Font size="20.0" />
          </font>
       </PasswordField>
-      <Button fx:id="authSignUpButton" layoutX="298.0" layoutY="351.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-radius: 8;" text="Join" textFill="#0000009d">
+      <Button fx:id="authSignUpButton" layoutX="298.0" layoutY="351.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="204.0" style="-fx-background-radius: 8;" text="Увійти" textFill="#0000009d">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Text fill="#00000082" layoutX="298.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authorization" textAlignment="CENTER" wrappingWidth="204.0">
+      <Text fill="#00000082" layoutX="298.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Авторізація" textAlignment="CENTER" wrappingWidth="204.0">
          <font>
             <Font size="34.0" />
          </font>
       </Text>
       <MenuBar fx:id="menuBar" layoutY="2.0" prefHeight="25.0" prefWidth="800.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Файл">
             <items>
-                  <MenuItem fx:id="menuItemAboutProgram" mnemonicParsing="false" text="About Program" />
+                  <MenuItem fx:id="menuItemAboutProgram" mnemonicParsing="false" text="Про програму" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Допомога">
             <items>
-              <MenuItem fx:id="menuItemHelp" mnemonicParsing="false" text="Help" />
+              <MenuItem fx:id="menuItemHelp" mnemonicParsing="false" text="Допомога" />
             </items>
           </Menu>
         </menus>

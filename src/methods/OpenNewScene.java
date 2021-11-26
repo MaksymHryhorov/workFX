@@ -29,19 +29,19 @@ public class OpenNewScene {
 
 
         if (window.equals("../filesFXML/tableController.fxml")) {
-            stage.setTitle("UsersTable");
+            stage.setTitle("Таблиця Користувачів");
             stage.setOnCloseRequest(windowEvent -> {
                 windowEvent.consume();
                 Alerts alerts = new Alerts();
-                alerts.showAlert(Alert.AlertType.CONFIRMATION,"WARNING","",
-                        "Do you save the data base?");
+                alerts.showAlert(Alert.AlertType.CONFIRMATION,"ПОПЕРЕДЖЕННЯ","",
+                        "Ви зберігли базу даних?");
             });
         }
         if (window.equals("../filesFXML/sample.fxml")) {
-            stage.setTitle("Menu");
+            stage.setTitle("Меню");
         }
         if (window.equals("../filesFXML/documentation.fxml")) {
-            stage.setTitle("Documentation");
+            stage.setTitle("Документація");
         }
 
         stage.show();

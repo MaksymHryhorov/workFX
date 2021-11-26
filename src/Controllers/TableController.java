@@ -106,7 +106,7 @@ public class TableController {
             changeLastName.setText(String.valueOf(user.getLastName()));
             changePit.setText(String.valueOf(user.getPit()));
         } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ERROR", "Select a user in the table");
+            alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Виберіть користувача в таблиці");
         }
 
     }
@@ -135,7 +135,7 @@ public class TableController {
                 System.out.println("no");
             }
         } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ERROR", "Please select a user in the table");
+            alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Будь ласка, виберіть користувача в таблиці");
         }
     }
 
@@ -198,7 +198,7 @@ public class TableController {
                 if (userNameInput.getText().isEmpty() | emailInput.getText().isEmpty() |
                         firstNameInput.getText().isEmpty() | lastNameInput.getText().isEmpty() |
                         pitInput.getText().isEmpty()) {
-                    alerts.showAlert(Alert.AlertType.ERROR, "Form Error!", "Please fill all of the fields");
+                    alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Будь ласка, заповніть усі поля");
                 } else {
                     UserAccount userAccount = new UserAccount(userNameInput.getText(), emailInput.getText(),
                             firstNameInput.getText(), lastNameInput.getText(), Integer.parseInt(pitInput.getText()));
@@ -206,7 +206,7 @@ public class TableController {
                 }
 
             } catch (NumberFormatException e) {
-                alerts.showAlert(Alert.AlertType.ERROR, "Form Error!", "Enter only numbers in pit");
+                alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Введіть лише числа в \"pit\"");
             }
 
 
@@ -216,8 +216,9 @@ public class TableController {
 
         saveButton.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("WARNING");
-            alert.setContentText("Do you really want to save data base?");
+            alert.setTitle("ПОПЕРЕДЖЕННЯ");
+            alert.setHeaderText(null);
+            alert.setContentText("Ви дійсно бажаєте зберегти базу даних?");
 
             Optional<ButtonType> result = alert.showAndWait();
 
@@ -239,8 +240,9 @@ public class TableController {
 
         regScene.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("WARNING");
-            alert.setContentText("Do you really want to log out?");
+            alert.setTitle("ПОПЕРЕДЖЕННЯ");
+            alert.setHeaderText(null);
+            alert.setContentText("Ви дійсно бажаєте вийти?");
 
             Optional<ButtonType> result = alert.showAndWait();
 
@@ -266,7 +268,7 @@ public class TableController {
         try {
             table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ERROR", "Select a user in the table");
+            alerts.showAlert(Alert.AlertType.ERROR, "ОШИБКА", "Виберіть користувача в таблиці");
         }
 
         table.setStyle("-fx-font: normal 17px 'cursive' ");
@@ -325,8 +327,9 @@ public class TableController {
 
     private void deleteButtonClicked() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("WARNING");
-        alert.setContentText("Do you really want to delete user?");
+        alert.setTitle("ПОПЕРЕДЖЕННЯ");
+        alert.setHeaderText(null);
+        alert.setContentText("Ви дійсно бажаєте видалити користувача?");
 
         ObservableList<UserAccount> userSelected, allUsers;
         allUsers = table.getItems();
