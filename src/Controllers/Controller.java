@@ -60,6 +60,8 @@ public class Controller {
 
         });
         buttonDocumentation.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
+        menuItemAboutProgram.setOnAction(event -> ons.openNewScene("../filesFXML/aboutProgram.fxml"));
+        menuItemHelp.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
 
         authSignUpButton.setTooltip(new Tooltip("Вхід"));
         buttonDocumentation.setStyle("-fx-font: normal 17px 'cursive' ");

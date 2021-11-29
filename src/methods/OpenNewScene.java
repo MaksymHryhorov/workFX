@@ -1,15 +1,12 @@
 package methods;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public class OpenNewScene {
     public void openNewScene(String window) {
@@ -42,6 +39,9 @@ public class OpenNewScene {
         }
         if (window.equals("../filesFXML/documentation.fxml")) {
             stage.setTitle("Документація");
+        }
+        if (window.equals("../filesFXML/aboutProgram.fxml")) {
+            stage.setTitle("Про програму");
         }
 
         stage.show();
