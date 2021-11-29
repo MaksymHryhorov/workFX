@@ -10,14 +10,14 @@ import methods.Alerts;
 
 import java.util.Objects;
 
-
+// Меню. сохранить бд в файл (по пути)
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../filesFXML/sample.fxml")));
-        primaryStage.setTitle("Меню");
+        primaryStage.setTitle("LabelName");
         primaryStage.setScene(new Scene(root, 800, 450));
         primaryStage.show();
 

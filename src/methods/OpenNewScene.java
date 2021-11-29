@@ -43,6 +43,9 @@ public class OpenNewScene {
         if (window.equals("../filesFXML/aboutProgram.fxml")) {
             stage.setTitle("Про програму");
         }
+        if (window.equals("../filesFXML/tableSearch.fxml")) {
+            stage.setTitle("Пошук користувачів");
+        }
 
         stage.show();
     }
