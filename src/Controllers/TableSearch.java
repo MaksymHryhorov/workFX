@@ -43,7 +43,7 @@ public class TableSearch {
     private TableColumn<UserAccount, String> userNameCol;
 
     @FXML
-    void initialize() throws IOException, ClassNotFoundException {
+    private void initialize() throws IOException, ClassNotFoundException {
         TableController tableController = new TableController();
 
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));

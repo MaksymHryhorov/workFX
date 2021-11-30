@@ -13,7 +13,7 @@ public class Documentation {
     private URL location;
 
     @FXML
-    void initialize() {
+    private void initialize() {
 
     }
 

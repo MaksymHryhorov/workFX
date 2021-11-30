@@ -35,7 +35,7 @@ public class OpenNewScene {
             });
         }
         if (window.equals("../filesFXML/sample.fxml")) {
-            stage.setTitle("Меню");
+            stage.setTitle("LabelName");
         }
         if (window.equals("../filesFXML/documentation.fxml")) {
             stage.setTitle("Документація");

@@ -42,7 +42,7 @@ public class Controller {
     private PasswordField passwordField;
     
     @FXML
-    void initialize() {
+    private void initialize() {
         OpenNewScene ons = new OpenNewScene();
         Alerts alerts = new Alerts();
 

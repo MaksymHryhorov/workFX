@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
+
 import methods.Alerts;
 import methods.OpenNewScene;
 import sample.UserAccount;
@@ -95,11 +96,65 @@ public class TableController {
     @FXML
     private Button findButton;
 
-    Alerts alerts = new Alerts();
+    @FXML
+    private void edit(ActionEvent event) {
+        try {
+            ObservableList<UserAccount> currentTableData = table.getItems();
 
-    FileInputStream fis = new FileInputStream("src/sample/map.txt");
-    ObjectInputStream ois = new ObjectInputStream(fis);
-    ArrayList<UserAccount> l = (ArrayList<UserAccount>) ois.readObject();
+            int currentPIT = Integer.parseInt(changePit.getText());
+
+            for (UserAccount user : currentTableData) {
+                if (user.getPit() == currentPIT) {
+                    user.setUserName(changeUserName.getText());
+                    user.setEmail(changeEmail.getText());
+                    user.setFirstName(changeFirstName.getText());
+                    user.setLastName(changeLastName.getText());
+                    user.setPit(Integer.parseInt(changePit.getText()));
+
+                    System.out.println("IN");
+
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("ПОПЕРЕДЖЕННЯ");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Ви дійсно бажаєте редагувати користувача?");
+
+                    Optional<ButtonType> result = alert.showAndWait();
+
+                    if (result.isPresent() && result.get() == ButtonType.OK) {
+                        table.setItems(currentTableData);
+                        table.refresh();
+                        break;
+                    }
+                }
+                System.out.println("no");
+            }
+        } catch (Exception e) {
+            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Будь ласка, виберіть користувача в таблиці");
+        }
+    }
+
+    @FXML
+    private void rowClicked(javafx.scene.input.MouseEvent event) {
+        try {
+            UserAccount user = table.getSelectionModel().getSelectedItem();
+            changeUserName.setText(String.valueOf(user.getUserName()));
+            changeEmail.setText(String.valueOf(user.getEmail()));
+            changeFirstName.setText(String.valueOf(user.getFirstName()));
+            changeLastName.setText(String.valueOf(user.getLastName()));
+            changePit.setText(String.valueOf(user.getPit()));
+        } catch (Exception e) {
+            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Виберіть користувача в таблиці");
+        }
+
+    }
+
+
+    Alerts alerts = new Alerts();
+    OpenNewScene ons = new OpenNewScene();
+
+    private final FileInputStream fis = new FileInputStream("src/sample/map.txt");
+    private final ObjectInputStream ois = new ObjectInputStream(fis);
+    private final ArrayList<UserAccount> l = (ArrayList<UserAccount>) ois.readObject();
     ObservableList<UserAccount> list = FXCollections.observableArrayList(l);
 
     public TableController() throws IOException, ClassNotFoundException {
@@ -108,7 +163,8 @@ public class TableController {
     }
 
     @FXML
-    void initialize() {
+    private void initialize() {
+
         table.setEditable(true);
 
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
@@ -202,7 +258,6 @@ public class TableController {
         changeColumnButton.setTooltip(new Tooltip("Зберегти зміни"));
         regScene.setTooltip(new Tooltip("Вийти з аккаунта"));
 
-        OpenNewScene ons = new OpenNewScene();
 
         regScene.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -304,46 +359,5 @@ public class TableController {
         write(allUsers);
     }
 
-    @FXML
-    void edit(ActionEvent event) {
-        try {
-            ObservableList<UserAccount> currentTableData = table.getItems();
-
-            int currentPIT = Integer.parseInt(changePit.getText());
-
-            for (UserAccount user : currentTableData) {
-                if (user.getPit() == currentPIT) {
-                    user.setUserName(changeUserName.getText());
-                    user.setEmail(changeEmail.getText());
-                    user.setFirstName(changeFirstName.getText());
-                    user.setLastName(changeLastName.getText());
-                    user.setPit(Integer.parseInt(changePit.getText()));
-
-                    System.out.println("IN");
-                    table.setItems(currentTableData);
-                    table.refresh();
-                    break;
-                }
-                System.out.println("no");
-            }
-        } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Будь ласка, виберіть користувача в таблиці");
-        }
-    }
-
-    @FXML
-    void rowClicked(javafx.scene.input.MouseEvent event) {
-        try {
-            UserAccount user = table.getSelectionModel().getSelectedItem();
-            changeUserName.setText(String.valueOf(user.getUserName()));
-            changeEmail.setText(String.valueOf(user.getEmail()));
-            changeFirstName.setText(String.valueOf(user.getFirstName()));
-            changeLastName.setText(String.valueOf(user.getLastName()));
-            changePit.setText(String.valueOf(user.getPit()));
-        } catch (Exception e) {
-            alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Виберіть користувача в таблиці");
-        }
-
-    }
 }
 
