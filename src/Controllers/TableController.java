@@ -148,7 +148,6 @@ public class TableController {
 
     }
 
-
     Alerts alerts = new Alerts();
     OpenNewScene ons = new OpenNewScene();
 
@@ -164,7 +163,6 @@ public class TableController {
 
     @FXML
     private void initialize() {
-
         table.setEditable(true);
 
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
@@ -275,7 +273,6 @@ public class TableController {
 
         });
 
-        /*ObservableList<UserAccount> list = getUserList();*/
 
         try {
             table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

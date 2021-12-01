@@ -1,9 +1,5 @@
 package Controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -12,6 +8,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.UserAccount;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class TableSearch {
 

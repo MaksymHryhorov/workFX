@@ -40,7 +40,7 @@ public class Controller {
 
     @FXML
     private PasswordField passwordField;
-    
+
     @FXML
     private void initialize() {
         OpenNewScene ons = new OpenNewScene();
@@ -68,7 +68,5 @@ public class Controller {
         buttonDocumentation.setTooltip(new Tooltip("Відкрити документацію"));
         loginField.setTooltip(new Tooltip("Введіть логін"));
         passwordField.setTooltip(new Tooltip("Введіть пароль"));
-
     }
-
 }
