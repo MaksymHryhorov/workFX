@@ -46,6 +46,9 @@ public class Controller {
         OpenNewScene ons = new OpenNewScene();
         Alerts alerts = new Alerts();
 
+        /* Натискання на кнопку авторізації
+         Лямбда вираз, перевірає якщо поля порожні вибрасує помилку,
+         Якщо воні заповнені відкріває нову сцено */
         authSignUpButton.setOnAction(actionEvent -> {
             if (loginField.getText().isEmpty() | passwordField.getText().isEmpty()) {
                 alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Будь ласка, введіть свій логін і пароль");
@@ -59,14 +62,21 @@ public class Controller {
 
 
         });
+
+        // Кнопка документації відкриває сцену з документацією.
         buttonDocumentation.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
+
+        // Меню ітем, котрий при натисканні відкриває нову сцену та показує розробника програми.
         menuItemAboutProgram.setOnAction(event -> ons.openNewScene("../filesFXML/aboutProgram.fxml"));
+
+        // Меню ітем, котрий при натисканні відкриваєь нову сцену, та відображає документацію.
         menuItemHelp.setOnAction(event -> ons.openNewScene("../filesFXML/documentation.fxml"));
 
+        // При наведені на поле відображає підсказку.
         authSignUpButton.setTooltip(new Tooltip("Вхід"));
-        buttonDocumentation.setStyle("-fx-font: normal 17px 'cursive' ");
         buttonDocumentation.setTooltip(new Tooltip("Відкрити документацію"));
         loginField.setTooltip(new Tooltip("Введіть логін"));
         passwordField.setTooltip(new Tooltip("Введіть пароль"));
+        buttonDocumentation.setStyle("-fx-font: normal 17px 'cursive' ");
     }
 }

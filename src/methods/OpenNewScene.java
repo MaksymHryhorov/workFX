@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+// Клас з методом, який відкриває нову сцену, та встановлює певні назви.
 public class OpenNewScene {
     public void openNewScene(String window) {
         FXMLLoader loader = new FXMLLoader();

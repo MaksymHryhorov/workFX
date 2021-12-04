@@ -151,9 +151,13 @@ public class TableController {
     Alerts alerts = new Alerts();
     OpenNewScene ons = new OpenNewScene();
 
+    // Створюємо об'єкт та зчитуємо дані з файлу.
     private final FileInputStream fis = new FileInputStream("src/sample/map.txt");
+    // Серіалізуємо файл.
     private final ObjectInputStream ois = new ObjectInputStream(fis);
+    // зчитуємо дані з файлу.
     private final ArrayList<UserAccount> l = (ArrayList<UserAccount>) ois.readObject();
+    // записуємо в колекцію.
     ObservableList<UserAccount> list = FXCollections.observableArrayList(l);
 
     public TableController() throws IOException, ClassNotFoundException {
@@ -163,9 +167,12 @@ public class TableController {
 
     @FXML
     private void initialize() {
+        // Ставимо парметр, що таблицю можно змінювати
         table.setEditable(true);
 
+        //Комірка з назвою userName
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        // Щоб її можна було змінювати
         userNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         userNameCol.setOnEditCommit(userAccountStringCellEditEvent -> {
@@ -245,6 +252,7 @@ public class TableController {
 
         });
 
+        // setTooltip, При наведені показуються підсказки
         userNameInput.setTooltip(new Tooltip("Введіть Ім'я користувача"));
         emailInput.setTooltip(new Tooltip("Введіть Пошту"));
         firstNameInput.setTooltip(new Tooltip("Введіть Ім'я"));
@@ -287,11 +295,13 @@ public class TableController {
 
     }
 
+    // Метот додавання до таблиці.
     private void add(UserAccount userAccount) {
         table.getItems().add(userAccount);
         clearFields();
     }
 
+    // Метод очищення полів після додавання до таблиці.
     private void clearFields() {
         userNameInput.clear();
         emailInput.clear();
@@ -300,6 +310,7 @@ public class TableController {
         pitInput.clear();
     }
 
+    // Метод очищення змінних полів після зміни таблиці.
     private void clearChangeFields() {
         changeUserName.clear();
         changeEmail.clear();
@@ -308,6 +319,7 @@ public class TableController {
         changePit.clear();
     }
 
+    // Метод додавання нових користувачів до файлу.
     private static void write(ObservableList<UserAccount> users) {
         try {
             FileOutputStream fos = new FileOutputStream("src/sample/map.txt");
@@ -327,6 +339,7 @@ public class TableController {
 
     }
 
+    // Метод для видалення користувача з таблиці.
     private void deleteButtonClicked() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("ПОПЕРЕДЖЕННЯ");
@@ -349,6 +362,7 @@ public class TableController {
 
     }
 
+    // Метод для збереження файлу бази даних.
     private void saveButtonClicked() {
         ObservableList<UserAccount> allUsers;
         allUsers = table.getItems();

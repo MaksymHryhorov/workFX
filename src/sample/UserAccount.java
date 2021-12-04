@@ -2,6 +2,7 @@ package sample;
 
 import java.io.Serializable;
 
+// Клас який создає нового юзера з певними полями.
 public class UserAccount implements Serializable {
     private String userName;
     private String email;

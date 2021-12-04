@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public class Alerts {
 
+    // Метод котрий приємає параметри: тип Помлки, заголовок та текст
     public void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -15,7 +16,7 @@ public class Alerts {
         alert.setContentText(message);
         alert.show();
     }
-
+    // Метод котрий приємає параметри та при підтверджені виходе з програми.
     public void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

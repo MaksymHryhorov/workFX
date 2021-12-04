@@ -7,13 +7,51 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefViewportHeight="500.0" prefViewportWidth="1000.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Documentation">
    <content>
-      <AnchorPane prefHeight="376.0" prefWidth="583.0" style="-fx-background-color: gray;">
+      <AnchorPane prefHeight="634.0" prefWidth="589.0">
          <children>
-            <Text layoutX="6.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Програмний продукт для роботи з файловою базою даних про фізичних осіб.2. Створення файлу бази даних та запис до нього даних у певному форматі.3. Читання всіх даних із файлу та їх відображення.4. Додавання нового елемента даних до файлу бази.5. Оновлення будь-якого елемента даних у файлі бази.6. Видалення будь-якого елемента даних із файлу.7. Отримання та відображення підсумкової інформації.8. Видача користувачу попереджуючих та інформаційних повідомлень.9. Сортування фізичних осіб в програмі." wrappingWidth="566.13671875">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
+            <AnchorPane layoutX="177.0" prefHeight="387.0" prefWidth="404.0">
+               <children>
+                  <Text layoutX="23.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 Архітектура програмної системи                                                                1.1 Використання не менше одної структури даних із стандартної бібліотеки колекцій.      1.2 Використання файлових потоків введення-виведення даних.                                                               1.3. Використання механізму винятків для обробки помилок.                                                               2 Керівництво користувача                                 2.1 Призначення програмного продукту                                                    Програма призначена для автоматизації роботи з файловою базою даних реєстру фізичних осіб. Вона забезпечує отримання і відображення підсумкової інформації за певною особою та дозволяє користувачу швидко отримати доступ до необхідної інформації.                                                           2.2 Використання програмного продукту                                                              2.3 Повідомлення користувачеві                     Під час введення чи редагування записів можуть виникати інформаційні вікна, які дають змогу користувачеві зрозуміти певний (найчастіше – невірний) напрямок своїх дій. Декілька основних прикладів далі розберемо.При спробі ввести неправильний ідентифікаційний код або просто залишити поля порожніми програма попередить користувача про неправильність його дій. Під час введення чи редагування записів можуть виникати інформаційні вікна, які дають змогу користувачеві зрозуміти певний (найчастіше – невірний) напрямок своїх дій. Декілька основних прикладів далі розберемо.При спробі ввести неправильний ідентифікаційний код або просто залишити поля порожніми програма попередить користувача про неправильність його дій." wrappingWidth="387.13671875">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="-4.0" layoutY="-2.0" prefHeight="983.0" prefWidth="188.0" style="-fx-background-color: #d3d3d3;">
+               <children>
+                  <Text layoutX="11.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Програмна документація" wrappingWidth="156.13671875">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="11.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 Архітектура програмної системи" wrappingWidth="169.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2 Керівництво користувача" wrappingWidth="169.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="22.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.1 Призначення програмного продукту " wrappingWidth="169.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="22.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.2 Використання програмного продукту" wrappingWidth="169.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="22.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.3 Повідомлення користувачеві" wrappingWidth="169.13671875">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </content>

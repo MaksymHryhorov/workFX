@@ -15,11 +15,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        //Загружаємо файл fxml з папки filesFXML
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../filesFXML/sample.fxml")));
+        // Встановлюємо заголовок
         primaryStage.setTitle("LabelName");
+        // Встановлюємо розмір сцени
         primaryStage.setScene(new Scene(root, 800, 450));
         primaryStage.show();
 
+        // Лямбда вираз. При виході з програми визиваємо метод класу Alerts, який перевіряє натиск на кнопку
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             Alerts alerts = new Alerts();
