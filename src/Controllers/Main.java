@@ -18,7 +18,7 @@ public class Main extends Application {
         //Загружаємо файл fxml з папки filesFXML
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../filesFXML/sample.fxml")));
         // Встановлюємо заголовок
-        primaryStage.setTitle("LabelName");
+        primaryStage.setTitle("Physical Person");
         // Встановлюємо розмір сцени
         primaryStage.setScene(new Scene(root, 800, 450));
         primaryStage.show();

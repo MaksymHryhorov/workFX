@@ -45,14 +45,16 @@ public class TableSearch {
     private void initialize() throws IOException, ClassNotFoundException {
         TableController tableController = new TableController();
 
+        // Комірки з назвами.
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         pit.setCellValueFactory(new PropertyValueFactory<>("pit"));
 
-
+        // Загорнути ObservableList у FilteredList (спочатку відобразити всі дані).
         FilteredList<UserAccount> filteredData = new FilteredList<>(tableController.list, p -> true);
+        // Встановити предикат фільтра щоразу, коли фільтр змінюється.
         find.setOnAction(e -> find.textProperty().addListener((observableValue, oldValue, newValue)
                 -> filteredData.setPredicate(user -> {
             if (newValue == null || newValue.isEmpty()) {
@@ -73,10 +75,14 @@ public class TableSearch {
             return false;
         })));
 
+        // Так як SortedList - final, записуємо його у FilteredList
         SortedList<UserAccount> sortedData = new SortedList<>(filteredData);
+
+        // Прив'язуємо компаратор SortedList до компаратора TableView.
         sortedData.comparatorProperty().bind(table.comparatorProperty());
 
         table.setStyle("-fx-font: normal 14px 'cursive' ");
+        //Додати відсортовані (і відфільтровані) дані до таблиці.
         table.setItems(sortedData);
 
     }

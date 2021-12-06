@@ -36,7 +36,7 @@ public class OpenNewScene {
             });
         }
         if (window.equals("../filesFXML/sample.fxml")) {
-            stage.setTitle("LabelName");
+            stage.setTitle("Physical Person");
         }
         if (window.equals("../filesFXML/documentation.fxml")) {
             stage.setTitle("Документація");

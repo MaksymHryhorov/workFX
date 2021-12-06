@@ -155,7 +155,6 @@ public class TableController {
     private final FileInputStream fis = new FileInputStream("src/sample/map.txt");
     // Серіалізуємо файл.
     private final ObjectInputStream ois = new ObjectInputStream(fis);
-    // зчитуємо дані з файлу.
     private final ArrayList<UserAccount> l = (ArrayList<UserAccount>) ois.readObject();
     // записуємо в колекцію.
     ObservableList<UserAccount> list = FXCollections.observableArrayList(l);
@@ -170,53 +169,47 @@ public class TableController {
         // Ставимо парметр, що таблицю можно змінювати
         table.setEditable(true);
 
-        //Комірка з назвою userName
+        // Комірки з назвами.
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
-        // Щоб її можна було змінювати
-        userNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        pit.setCellValueFactory(new PropertyValueFactory<>("pit"));
 
+        /* Відповідає за відображення даних,
+         що містяться в кожному осередку Table Cell, для одного стовпця таблиці. */
+        userNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        pit.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        // При зміні даних в таблиці, робимо, щоб вони були оновені.
         userNameCol.setOnEditCommit(userAccountStringCellEditEvent -> {
             UserAccount userAccount = userAccountStringCellEditEvent.getRowValue();
             userAccount.setUserName(userAccountStringCellEditEvent.getNewValue());
         });
-
-
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         emailCol.setOnEditCommit(userAccountStringCellEditEvent -> {
             UserAccount userAccount = userAccountStringCellEditEvent.getRowValue();
             userAccount.setEmail(userAccountStringCellEditEvent.getNewValue());
         });
-
-
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         firstNameCol.setOnEditCommit(userAccountStringCellEditEvent -> {
             UserAccount userAccount = userAccountStringCellEditEvent.getRowValue();
             userAccount.setFirstName(userAccountStringCellEditEvent.getNewValue());
         });
-
-
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        lastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
-
         lastNameCol.setOnEditCommit(userAccountStringCellEditEvent -> {
             UserAccount userAccount = userAccountStringCellEditEvent.getRowValue();
             userAccount.setLastName(userAccountStringCellEditEvent.getNewValue());
         });
-
-
-        pit.setCellValueFactory(new PropertyValueFactory<>("pit"));
-        pit.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-
         pit.setOnEditCommit(userAccountStringCellEditEvent -> {
             UserAccount userAccount = userAccountStringCellEditEvent.getRowValue();
             userAccount.setPit(userAccountStringCellEditEvent.getNewValue());
         });
 
 
+        /* При натисканні на кнопку "addButton".
+            Перевіряємо, щоб усі поля були заповнені, якщо ні, викидаємо помилки
+            Якщо всі поля правильно заповнені додаванням нового користувача до таблиці методом add */
         addButton.setOnAction(event -> {
             try {
                 if (userNameInput.getText().isEmpty() | emailInput.getText().isEmpty() |
@@ -235,8 +228,12 @@ public class TableController {
 
         });
 
+        // При натисканні на кнопку, визиваємо метод deleteButtonClicked()
         deleteButton.setOnAction(event -> deleteButtonClicked());
 
+        /* При натисканні на кнопку, перевіряємо:
+           якщо користувач натиснув ні, нічого не відбудеться,
+           якщо так, файл бази данхи оновлюється та зберігється */
         saveButton.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("ПОПЕРЕДЖЕННЯ");
@@ -265,6 +262,7 @@ public class TableController {
         regScene.setTooltip(new Tooltip("Вийти з аккаунта"));
 
 
+        /* При натисканні на кнопку, переходемо до меню "Вхід" */
         regScene.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("ПОПЕРЕДЖЕННЯ");
@@ -281,16 +279,19 @@ public class TableController {
 
         });
 
-
         try {
             table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         } catch (Exception e) {
             alerts.showAlert(Alert.AlertType.ERROR, "ПОМИЛКА", "Виберіть користувача в таблиці");
         }
 
+        // Встановлюємо формат таблиці
         table.setStyle("-fx-font: normal 16px 'cursive' ");
 
+        // При натисканні відкриваємо нову сцену (пошуку по таблиці)
         findButton.setOnAction(event -> ons.openNewScene("../filesFXML/tableSearch.fxml"));
+
+        // Запомнюємо таблицю даними з файлу
         table.setItems(list);
 
     }
@@ -310,7 +311,7 @@ public class TableController {
         pitInput.clear();
     }
 
-    // Метод очищення змінних полів після зміни таблиці.
+    // Метод очищення змінних полів після зміни користувача.
     private void clearChangeFields() {
         changeUserName.clear();
         changeEmail.clear();
